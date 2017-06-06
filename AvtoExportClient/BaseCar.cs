@@ -48,8 +48,21 @@ namespace AvtoExportClient
             R2, R3, R4, R5, R505
         }
 
+        // В качестве ID используется цена
+        public enum _МодельИспользуемогоРаспредвала
+        {
+            Иной = -1,
+            Стандарт = 0,
+            VFTS_1 = 100,
+            VFTS_2 = 200,
+            VFTS_3 = 300,
+            VFTS_T16 = 150,
+            MTX_1 = 350,
+            MTX_2 = 300,
+        }
+
         // Название модели
-        public string Name
+        public string Название_Модели
         {
             get
             {
@@ -62,7 +75,7 @@ namespace AvtoExportClient
             }
         }
 
-        public string Manufacturer
+        public string Производитель
         {
             get
             {
@@ -75,7 +88,7 @@ namespace AvtoExportClient
             }
         }
 
-        public float Weight
+        public float Вес
         {
             get
             {
@@ -88,7 +101,7 @@ namespace AvtoExportClient
             }
         }
 
-        public float Length
+        public float Длина
         {
             get
             {
@@ -101,7 +114,7 @@ namespace AvtoExportClient
             }
         }
 
-        public bool WithSafetyCarcass
+        public bool КаркасБезопасности
         {
             get
             {
@@ -114,7 +127,7 @@ namespace AvtoExportClient
             }
         }
 
-        public bool WithCompositeMaterials
+        public bool ИспользованиеКомпозитныхМатериалов
         {
             get
             {
@@ -218,7 +231,7 @@ namespace AvtoExportClient
             }
         }
 
-        public string МодельИспользуемогоРаспредвала
+        public _МодельИспользуемогоРаспредвала МодельИспользуемогоРаспредвала
         {
             get
             {
@@ -229,6 +242,7 @@ namespace AvtoExportClient
             {
                 модельИспользуемогоРаспредвала = value;
             }
+
         }
 
         public string МаркаКарбюраторов
@@ -425,7 +439,7 @@ namespace AvtoExportClient
                 датаПроизводстваИсходнойМашины = value;
             }
         }
-        
+
         public DateTime ДатаПроизводстваЦелевойМашины
         {
             get
@@ -438,7 +452,7 @@ namespace AvtoExportClient
                 датаПроизводстваЦелевойМашины = value;
             }
         }
-        
+
         public string Discipline
         {
             get
@@ -451,7 +465,7 @@ namespace AvtoExportClient
                 discipline = value;
             }
         }
-        
+
         public int UniqCarNumber
         {
             get
@@ -464,19 +478,34 @@ namespace AvtoExportClient
                 uniqCarNumber = value;
             }
         }
-        
-        public float Price
+
+        public float Цена
         {
             get
             {
-                return price;
+                return _Цена;
             }
 
             set
             {
-                price = value;
+                _Цена = value;
             }
         }
+
+        public string Примечания
+        {
+            get
+            {
+                return _Примечания;
+            }
+
+            set
+            {
+                _Примечания = value;
+            }
+        }
+
+        string _Примечания = "";
 
         // Название модели
         private string name = "Заводская Тольятти";
@@ -519,7 +548,7 @@ namespace AvtoExportClient
         //========================= Двигатель
         private int объемБлокаЦилиндров = 1294; //1.3 двигатель
 
-        private string модельИспользуемогоРаспредвала = "стандарт";
+        private _МодельИспользуемогоРаспредвала модельИспользуемогоРаспредвала = _МодельИспользуемогоРаспредвала.Стандарт;
 
         private string маркаКарбюраторов = "Дааз"; // Дааз(стандарт), Солекс(экспортный вариант), Weber 45 DCOE(боевой карбюратор), dellorto 40/45(боевой карбюратор), кастомные
 
@@ -533,7 +562,7 @@ namespace AvtoExportClient
         private float количествоЛС = 69;//1.3 двигатель
 
         private Tuple<float, _МатериалыМеталл> массаМаховикаИМатериал = new Tuple<float, _МатериалыМеталл>((float)7.4, _МатериалыМеталл.Заводская); // Заводской вес сильно больше
-        //=========================
+                                                                                                                                                    //=========================
 
         //========================= Коробка
         private bool прямозубаяКоробкаПередач = false;
@@ -569,6 +598,6 @@ namespace AvtoExportClient
         // TODO: Увеличивать инкрементно
         private int uniqCarNumber = -1;
 
-        private float price = (float)700.0;//$
+        private float _Цена = (float)700.0;//$
     }
 }

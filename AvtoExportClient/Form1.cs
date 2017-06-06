@@ -17,8 +17,8 @@ namespace AvtoExportClient
         private void _Load()
         {
             dataGridView1.AutoGenerateColumns = true;
-            dataGridView1.DataSource = m_carManager.carList;
 
+            dataGridView1.DataSource = m_carManager.carList;
             dataGridView1.CellPainting += DataGridView1_CellPainting;
 
 
@@ -95,6 +95,12 @@ namespace AvtoExportClient
                 string res = jsonFormatter.Serialize(m_carManager.carList);
                 File.WriteAllText(System.Environment.CurrentDirectory + @"\cars.json", res);
             }
+        }
+
+        private void button2_Click(object sender, System.EventArgs e)
+        {
+            var t = new UserControl1();
+            t.Show();
         }
     }
 }

@@ -3,9 +3,12 @@ using System.Collections.Generic;
 
 namespace AvtoExportClient
 {
+    [Serializable]
     public sealed class CarManager
     {
+        [NonSerialized]
         private static volatile CarManager instance;
+        [NonSerialized]
         private static object syncRoot = new Object();
 
         private CarManager()
@@ -30,6 +33,7 @@ namespace AvtoExportClient
             }
         }
 
+        //[Serializable]
         public List<BaseCar> carList = new List<BaseCar>();
 
         private void _Test()

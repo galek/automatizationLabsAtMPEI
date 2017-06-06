@@ -95,6 +95,23 @@ namespace AvtoExportClient
         public enum cистемаЗажигания
         { Контактная = 0, Бесконтактная }
 
+        public enum _СпортивнаяДисциплина
+        {
+            ГражданскаяЕзда,
+            Ралли,
+            Кольцо,
+            ПодъемНаХолм,
+            Дрифт,
+            Выносливость,
+            АвтоКросс,
+            Автослалом,
+            Дрэгрейсинг,
+            Выживание
+        }
+
+        _СпортивнаяДисциплина _cпортивнаяДисциплина = _СпортивнаяДисциплина.ГражданскаяЕзда;
+
+    
         // Название модели
         public string Название_Модели
         {
@@ -472,6 +489,32 @@ namespace AvtoExportClient
                 реализуемыйПривод = value;
             }
         }
+        
+        public bool ЗаблокированныйДифференциал
+        {
+            get
+            {
+                return _ЗаблокированныйДифференциал;
+            }
+
+            set
+            {
+                _ЗаблокированныйДифференциал = value;
+            }
+        }
+
+        public _СпортивнаяДисциплина СпортивнаяДисциплина
+        {
+            get
+            {
+                return _cпортивнаяДисциплина;
+            }
+
+            set
+            {
+                _cпортивнаяДисциплина = value;
+            }
+        }
 
         public DateTime ДатаПроизводстваИсходнойМашины
         {
@@ -496,19 +539,6 @@ namespace AvtoExportClient
             set
             {
                 датаПроизводстваЦелевойМашины = value;
-            }
-        }
-
-        public string Discipline
-        {
-            get
-            {
-                return discipline;
-            }
-
-            set
-            {
-                discipline = value;
             }
         }
 
@@ -638,13 +668,11 @@ namespace AvtoExportClient
         private DateTime датаПроизводстваИсходнойМашины = DateTime.Today;
         private DateTime датаПроизводстваЦелевойМашины = DateTime.Today;
 
-        // Название дисциплины в которой применяется авто.
-        private string discipline = "Дороги общего пользования";
-
         // Уникальный фабричный номер машины
         // TODO: Увеличивать инкрементно
         private int uniqCarNumber = -1;
 
         private float _Цена = (float)700.0;//$
+        private bool _ЗаблокированныйДифференциал = false;
     }
 }

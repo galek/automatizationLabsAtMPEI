@@ -1,6 +1,6 @@
-﻿using System.Windows;
-using System.IO;
+﻿using System.IO;
 using System.Web.Script.Serialization;
+using System.Windows;
 
 namespace AvtoExportClient
 {

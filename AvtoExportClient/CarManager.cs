@@ -8,6 +8,7 @@ namespace AvtoExportClient
     {
         [NonSerialized]
         private static volatile CarManager instance;
+
         [NonSerialized]
         private static object syncRoot = new Object();
 

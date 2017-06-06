@@ -1,7 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Runtime.Serialization.Json;
-using System.Runtime.Serialization;
 
 namespace AvtoExportClient
 {
@@ -61,6 +58,21 @@ namespace AvtoExportClient
             MTX_2 = 300,
         }
 
+        public enum _ЗаводСборщик
+        {
+            Тольятти,
+            ИЖ
+        }
+
+        public enum _Ателье
+        {
+            Заводская = 0,
+            ВФТС,
+            Вихур,
+            Metallex,
+            ЛГСА
+        }
+
         // Название модели
         public string Название_Модели
         {
@@ -75,7 +87,7 @@ namespace AvtoExportClient
             }
         }
 
-        public string Производитель
+        public _ЗаводСборщик Производитель
         {
             get
             {
@@ -85,6 +97,19 @@ namespace AvtoExportClient
             set
             {
                 manufacturer = value;
+            }
+        }
+
+        public _Ателье Подрядчик
+        {
+            get
+            {
+                return _Подрядчик;
+            }
+
+            set
+            {
+                _Подрядчик = value;
             }
         }
 
@@ -242,7 +267,6 @@ namespace AvtoExportClient
             {
                 модельИспользуемогоРаспредвала = value;
             }
-
         }
 
         public string МаркаКарбюраторов
@@ -505,13 +529,15 @@ namespace AvtoExportClient
             }
         }
 
-        string _Примечания = "";
+        private string _Примечания = "";
 
         // Название модели
-        private string name = "Заводская Тольятти";
+        private string name = "Заводская";
 
         // Название фирмы производителя
-        private string manufacturer = "Тольятти";
+        private _ЗаводСборщик manufacturer = _ЗаводСборщик.Тольятти;
+
+        private _Ателье _Подрядчик = _Ателье.Заводская;
 
         // Вес
         private float weight = 995;

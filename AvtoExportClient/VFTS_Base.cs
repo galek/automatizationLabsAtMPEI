@@ -1,7 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Runtime.Serialization.Json;
-using System.Runtime.Serialization;
 
 namespace AvtoExportClient
 {
@@ -13,7 +10,7 @@ namespace AvtoExportClient
         {
             //==============БАЗОВАЯ МОДЕЛЬ//==============
             Название_Модели = "ВФТС Базовая Модель";
-            Производитель = "ВФТС";
+            Подрядчик = _Ателье.ВФТС;
             Вес = 980;
             Длина = 4090;
             // Включен ли каркас безопасности
@@ -76,6 +73,5 @@ namespace AvtoExportClient
 
             Цена = 20000;
         }
-
     }
 }

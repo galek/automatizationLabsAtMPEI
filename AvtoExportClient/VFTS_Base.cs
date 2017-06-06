@@ -20,7 +20,7 @@ namespace AvtoExportClient
             WithSafetyCarcass = true;
 
             // Содержатся ли элементы из композитных материалов?
-            withCompositeMaterials = false;
+            WithCompositeMaterials = false;
             //============================================
             //==============Подвеска======================
             ИспользуетсяЗаднийСтабилизатор = false;

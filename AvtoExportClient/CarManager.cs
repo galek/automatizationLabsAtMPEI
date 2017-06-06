@@ -36,6 +36,9 @@ namespace AvtoExportClient
         private void _Test()
         {
             carList.Add(new VFTS_Base());
+            carList.Add(new VFTS_Base());
+            carList.Add(new VFTS_Base());
+            carList.Add(new VFTS_Base());
         }
     }
 }

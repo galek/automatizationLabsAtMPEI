@@ -148,8 +148,12 @@
                 <ColumnDefinition Width="10*" />
                 <ColumnDefinition Width="10*" />
             </Grid.ColumnDefinitions>
-            <DataGrid x:Name="dataGrid" Margin="0,4,0,0" VerticalAlignment="Top" RenderTransformOrigin="4.75,0.846" Height="236" Grid.Column="2" Grid.ColumnSpan="50" Grid.Row="46" Grid.RowSpan="15" HorizontalAlignment="Right" Width="1162" />
+            <DataGrid x:Name="dataGrid" RenderTransformOrigin="4.75,0.846" Grid.Column="2" Grid.ColumnSpan="50" Grid.Row="46" Grid.RowSpan="15" Margin="0,4,0,0" />
             <Label x:Name="label" Grid.ColumnSpan="7" Content="Заказанные машины" Grid.Column="2" Margin="0,0,4,12" Grid.Row="44" Grid.RowSpan="3" Height="26" VerticalAlignment="Bottom" />
+            <DataGrid x:Name="dataGrid_Copy" Margin="0,2,0,0" VerticalAlignment="Top" RenderTransformOrigin="4.75,0.846" Height="236" Grid.Column="2" Grid.ColumnSpan="50" Grid.Row="12" Grid.RowSpan="15" HorizontalAlignment="Right" Width="1162" />
+            <Label x:Name="label_Copy" Grid.ColumnSpan="7" Content="Заказанные машины" Grid.Column="2" Margin="0,0,4,15" Grid.Row="10" Grid.RowSpan="3" Height="26" VerticalAlignment="Bottom" />
+            <Label x:Name="label_Copy1" Grid.ColumnSpan="11" Content="Общая стоимость:" Grid.Column="38" Grid.Row="62" Grid.RowSpan="3" FontSize="20" />
+            <Label x:Name="label_price" Grid.ColumnSpan="7" Content="0 $" Grid.Column="46" Margin="0,9,1,13" Grid.Row="62" Grid.RowSpan="3" RenderTransformOrigin="6.597,12" />
         </Grid>
     </DockPanel>
 </Window>

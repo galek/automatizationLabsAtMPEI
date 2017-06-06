@@ -35,11 +35,12 @@ namespace AvtoExportClient
         }
 
         //[Serializable]
-        public List<BaseCar> carList = new List<BaseCar>();
+        public List<BaseCar> carListOrdered = new List<BaseCar>();
+        public List<BaseCar> carListPreOrder = new List<BaseCar>();
 
         private void _Test()
         {
-            carList.Add(new VFTS_Base());
+            carListOrdered.Add(new VFTS_Base());
         }
     }
 }

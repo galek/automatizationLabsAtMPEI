@@ -66,6 +66,8 @@
     <Compile Include="JsonHelpers.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VFTS_750.cs" />
+    <Compile Include="VFTS_850.cs" />
     <Compile Include="VFTS_Base.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

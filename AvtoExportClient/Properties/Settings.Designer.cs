@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AvtoExportClient.Properties
+namespace Test.Properties
 {
 
 

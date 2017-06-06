@@ -32,7 +32,6 @@ namespace AvtoExportClient
 
         public List<BaseCar> carList = new List<BaseCar>();
 
-
         private void _Test()
         {
             carList.Add(new VFTS_Base());

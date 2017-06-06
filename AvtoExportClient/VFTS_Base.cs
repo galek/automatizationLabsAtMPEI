@@ -7,7 +7,6 @@ namespace AvtoExportClient
 {
     //ВФТС Базовая Модель без алюминиевых деталей(WithSafetyCarcass)
     [Serializable]
-    [DataContract]
     public class VFTS_Base : BaseCar
     {
         public VFTS_Base()

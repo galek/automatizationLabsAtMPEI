@@ -7,7 +7,6 @@ namespace AvtoExportClient
 {
     // Количество облегченных детелаей. Просто счетчик
     [Serializable]
-    [DataContract]
     public class BaseCar
     {
         public enum _МатериалыМеталл
@@ -49,7 +48,6 @@ namespace AvtoExportClient
             R2, R3, R4, R5, R505
         }
 
-        [DataMember]
         // Название модели
         public string Name
         {
@@ -64,7 +62,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public string Manufacturer
         {
             get
@@ -78,7 +75,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public float Weight
         {
             get
@@ -92,7 +88,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public float Length
         {
             get
@@ -106,7 +101,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public bool WithSafetyCarcass
         {
             get
@@ -120,7 +114,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public bool WithCompositeMaterials
         {
             get
@@ -134,7 +127,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public bool ИспользуетсяЗаднийСтабилизатор
         {
             get
@@ -148,7 +140,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public _ТипАмортизаторов ТипАмортизаторов
         {
             get
@@ -162,7 +153,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public string МаркаАмортизаторов
         {
             get
@@ -176,7 +166,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public Tuple<bool, _МатериалыМеталл> СтабилизаторПоперечнойУчтойчивостиИМатериал
         {
             get
@@ -190,7 +179,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public bool НаличиеГидроручника
         {
             get
@@ -204,7 +192,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public bool ЗадниеДисковоыеТормоза
         {
             get
@@ -218,7 +205,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public int ОбъемБлокаЦилиндров
         {
             get
@@ -232,7 +218,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public string МодельИспользуемогоРаспредвала
         {
             get
@@ -246,7 +231,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public string МаркаКарбюраторов
         {
             get
@@ -260,7 +244,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public bool ИспользуетсяСистемаВпрыска
         {
             get
@@ -274,7 +257,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public string СистемаВпрыска
         {
             get
@@ -288,7 +270,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public string СистемаЗажигания
         {
             get
@@ -302,7 +283,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public float СтепеньСжатия
         {
             get
@@ -316,7 +296,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public float КоличествоЛС
         {
             get
@@ -330,7 +309,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public Tuple<float, _МатериалыМеталл> МассаМаховикаИМатериал
         {
             get
@@ -344,7 +322,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public bool ПрямозубаяКоробкаПередач
         {
             get
@@ -358,7 +335,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public int КоличествоСтупеней
         {
             get
@@ -372,7 +348,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public _ИспользуемыйРяд ИспользуемыйРяд
         {
             get
@@ -386,7 +361,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public Tuple<float, int> ГлавнаяПара
         {
             get
@@ -400,7 +374,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public bool ДополнительныйСвет
         {
             get
@@ -414,7 +387,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public string МодельИМаркаИспользуемогоОбвеса
         {
             get
@@ -428,7 +400,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public _Привод РеализуемыйПривод
         {
             get
@@ -442,7 +413,6 @@ namespace AvtoExportClient
             }
         }
 
-        [DataMember]
         public DateTime ДатаПроизводстваИсходнойМашины
         {
             get
@@ -455,8 +425,7 @@ namespace AvtoExportClient
                 датаПроизводстваИсходнойМашины = value;
             }
         }
-
-        [DataMember]
+        
         public DateTime ДатаПроизводстваЦелевойМашины
         {
             get
@@ -469,8 +438,7 @@ namespace AvtoExportClient
                 датаПроизводстваЦелевойМашины = value;
             }
         }
-
-        [DataMember]
+        
         public string Discipline
         {
             get
@@ -483,8 +451,7 @@ namespace AvtoExportClient
                 discipline = value;
             }
         }
-
-        [DataMember]
+        
         public int UniqCarNumber
         {
             get
@@ -497,8 +464,7 @@ namespace AvtoExportClient
                 uniqCarNumber = value;
             }
         }
-
-        [DataMember]
+        
         public float Price
         {
             get

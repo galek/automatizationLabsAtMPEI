@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace AvtoExportClient
 {
     //ВФТС Базовая Модель без алюминиевых деталей(WithSafetyCarcass)
-    class VFTS_Base : BaseCar
+    public class VFTS_Base : BaseCar
     {
-        VFTS_Base()
+        public VFTS_Base()
         {
             //==============БАЗОВАЯ МОДЕЛЬ//==============
             Name = "ВФТС Базовая Модель";
@@ -76,6 +76,18 @@ namespace AvtoExportClient
             Discipline = "Ралли";
 
             Price = 20000;
+        }
+
+        public bool WithSafetyCarcass1
+        {
+            get
+            {
+                return WithSafetyCarcass;
+            }
+            set
+            {
+                WithSafetyCarcass = value;
+            }
         }
     }
 }

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace AvtoExportClient
 {
@@ -15,6 +7,17 @@ namespace AvtoExportClient
         public Form1()
         {
             InitializeComponent();
+            Load();
         }
+
+        private void Load()
+        {
+            foreach (BaseCar car in m_carManager.carList)
+            {
+                listView1.Items.Add(car.Name);
+            }
+        }
+
+        static CarManager m_carManager = CarManager.Instance;
     }
 }

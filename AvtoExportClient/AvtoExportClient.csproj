@@ -76,6 +76,8 @@
     <Compile Include="BaseCar.cs" />
     <Compile Include="CarManager.cs" />
     <Compile Include="JsonHelpers.cs" />
+    <Compile Include="Pricelist.cs" />
+    <Compile Include="PrintDoc.cs" />
     <Compile Include="VFTS_750.cs" />
     <Compile Include="VFTS_850.cs" />
     <Compile Include="VFTS_Base.cs" />

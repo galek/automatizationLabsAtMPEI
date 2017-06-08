@@ -1,6 +1,9 @@
 ﻿using System.IO;
 using System.Web.Script.Serialization;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Media;
 
 namespace AvtoExportClient
 {
@@ -95,6 +98,48 @@ namespace AvtoExportClient
                 string res = jsonFormatter.Serialize(CarManager.Instance.carListOrdered);
                 File.WriteAllText(System.Environment.CurrentDirectory + @"\cars.json", res);
             }
+        }
+
+        private void PrintItem_Click(object sender, RoutedEventArgs e)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == true)
+            {
+                // A4
+                Size pageSize = new Size(900, 1200);
+                // sizing of the element.
+                dataGrid.Measure(pageSize);
+                dataGrid.Arrange(new Rect(5, 5, pageSize.Width, pageSize.Height));
+
+                FlowDocument doc = new FlowDocument();
+
+                int counter = 0;
+
+                foreach (BaseCar car in this.dataGrid.ItemsSource)
+                {
+                    Paragraph par = new Paragraph();
+                    par.Inlines.Add(car.Название_Модели.ToString() + " " + car.UniqCarNumber.ToString() + " " + car.ДатаПроизводстваИсходнойМашины + " " + car.ДатаПроизводстваЦелевойМашины + "\r\n");
+                    par.Inlines.Add("___________________________________\r\n");
+
+                    par.Margin = new Thickness(0);
+
+                    doc.Blocks.Add(par);
+
+                    counter++;
+                }
+
+
+                Paragraph p = new Paragraph();
+                p.Inlines.Add("===================================\r\n");
+                p.Inlines.Add("Всего заказано машин: " + counter.ToString() +" cтоимость: " + label_price.Content.ToString() + "\r\n");
+                p.Margin = new Thickness(0);
+
+                doc.Blocks.Add(p);
+                doc.Name = "FlowDoc";
+                IDocumentPaginatorSource idpSource = doc;
+                printDialog.PrintDocument(idpSource.DocumentPaginator, "My Printing");
+            }
+
         }
     }
 }

@@ -165,6 +165,7 @@ namespace AvtoExportClient
             }
         }
 
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
             var car = new BaseCar();
@@ -199,6 +200,24 @@ namespace AvtoExportClient
 
             this.dataGrid_Copy.ItemsSource = null;
             this.dataGrid_Copy.ItemsSource = CarManager.Instance.carListPreOrder;
+        }
+
+        private void button1_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.dataGrid_Copy.SelectedItem == null)
+                return;
+
+            if (MessageBox.Show("Удалить?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                foreach (BaseCar car in dataGrid_Copy.SelectedItems)
+                {
+                    if (car != null)
+                        CarManager.Instance.carListPreOrder.Remove(car);
+
+                }
+                this.dataGrid_Copy.ItemsSource = null;
+                this.dataGrid_Copy.ItemsSource = CarManager.Instance.carListPreOrder;
+            }
         }
     }
 }

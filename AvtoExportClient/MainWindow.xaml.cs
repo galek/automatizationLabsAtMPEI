@@ -103,25 +103,136 @@ namespace AvtoExportClient
 
         private void DataGrid_CellEditEnding(object sender, System.Windows.Controls.DataGridCellEditEndingEventArgs e)
         {
-            MessageBox.Show("1");
-            // TODO: Check in prices;
-            _CheckInPrice(dataGrid_Copy.SelectedItem as BaseCar);
-
-
+            _CheckInPrice(dataGrid_Copy.SelectedItem as BaseCar, e);
 
             _RecomputePrice();
             _RecomputePrice_Copy();
         }
 
-        void _CheckInPrice(BaseCar car)
+        void _CheckInPrice(BaseCar car, System.Windows.Controls.DataGridCellEditEndingEventArgs e)
         {
-
-
-            //car.Цена += 9999;
-
-
-            _RecomputePrice_Copy();
+            if (e.EditAction == DataGridEditAction.Commit)
+            {
+                //        var column = e.Column as DataGridBoundColumn;
+                //        if (column != null)
+                //        {
+                //            var t = (column.Binding as Binding);
+                //            var bindingPath = t.Path.Path;
+                //            if (bindingPath == "Col2")
+                //            {
+                //                int rowIndex = e.Row.GetIndex();
+                //                var el = e.EditingElement as TextBox;
+                //                // rowIndex has the row index
+                //                // bindingPath has the column's binding
+                //                // el.Text has the new, user-entered value
+                //            }
+                //            else
+                //            {
+                //                // Тут уже фильтруем по значениеям
+                //                MessageBox.Show(t.Path.PathParameters.ToString());
+                //            }
+                //        }
+                _RecomputePrice_Copy();
+            }
         }
+
+        //void _ActionsOnPrice(string _type)
+        //{
+        //    if (_type == "Производитель")
+        //    {
+
+        //    }
+        //    else if (_type == "Подрядчик")
+        //    {
+
+        //    }
+        //    else if (_type == "Вес")
+        //    {
+
+        //    }
+        //    else if (_type == "Длина")
+        //    {
+
+        //    }
+        //    else if (_type == "КаркасБезопасности")
+        //    {
+
+        //    }
+        //    else if (_type == "ИспользованиеКомпозитныхМатериалов")
+        //    {
+
+        //    }
+        //    else if (_type == "ИспользуетсяЗаднийСтабилизатор")
+        //    {
+
+        //    }
+        //    else if (_type == "ТипАмортизаторов")
+        //    {
+
+        //    }
+        //    else if (_type == "СтабилизаторПоперечнойУчтойчивостиИМатериал")
+        //    {
+
+        //    }
+        //    else if (_type == "НаличиеГидроручника")
+        //    {
+
+        //    }
+        //    else if (_type == "ЗадниеДисковоыеТормоза")
+        //    {
+
+        //    }
+        //    else if (_type == "Двигатель")
+        //    {
+
+        //    }
+        //    else if (_type == "МодельИспользуемогоРаспредвала")
+        //    {
+
+        //    }
+        //    else if (_type == "ИспользуетсяСистемаВпрыска")
+        //    {
+
+        //    }
+        //    else if (_type == "СистемаВпрыска")
+        //    {
+
+        //    }
+        //    else if (_type == "СистемаЗажигания")
+        //    {
+
+        //    }
+        //    else if (_type == "МассаМаховикаИМатериал")
+        //    {
+
+        //    }
+        //    else if (_type == "ПрямозубаяКоробкаПередач")
+        //    {
+
+        //    }
+        //    else if (_type == "ИспользуемыйРяд")
+        //    {
+
+        //    }
+        //    else if (_type == "ДополнительныйСвет")
+        //    {
+
+        //    }
+        //    else if (_type == "МодельИМаркаИспользуемогоОбвеса")
+        //    {
+
+        //    }
+        //    else if (_type == "РеализуемыйПривод")
+        //    {
+
+        //    }
+        //    else if (_type == "ЗаблокированныйДифференциал")
+        //    {
+
+        //    }
+        //    //car.Цена += 9999;
+        //}
+
 
         private void DataGrid_BeginningEdit(object sender, System.Windows.Controls.DataGridBeginningEditEventArgs e)
         {

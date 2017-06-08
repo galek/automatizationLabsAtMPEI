@@ -96,7 +96,23 @@ namespace AvtoExportClient
 
         private void DataGrid_CellEditEnding(object sender, System.Windows.Controls.DataGridCellEditEndingEventArgs e)
         {
+            MessageBox.Show("1");
+            // TODO: Check in prices;
+            _CheckInPrice(dataGrid_Copy.SelectedItem as BaseCar);
+
+
+
             _RecomputePrice();
+            _RecomputePrice_Copy();
+        }
+
+        void _CheckInPrice(BaseCar car)
+        {
+   
+
+            //car.Цена += 9999;
+
+
             _RecomputePrice_Copy();
         }
 
@@ -163,7 +179,7 @@ namespace AvtoExportClient
                 foreach (BaseCar car in this.dataGrid.ItemsSource)
                 {
                     Paragraph par = new Paragraph();
-                    par.Inlines.Add(car.Название_Модели.ToString() + " " + car.UniqCarNumber.ToString() + " " + car.ДатаПроизводстваИсходнойМашины + " " + car.ДатаПроизводстваЦелевойМашины + "\r\n");
+                    par.Inlines.Add(car.Название_Модели.ToString() + " " + car.УникальныйФабричныйНомер.ToString() + " " + car.ДатаПроизводстваИсходнойМашины + " " + car.ДатаПроизводстваЦелевойМашины + "\r\n");
                     par.Inlines.Add("___________________________________\r\n");
 
                     par.Margin = new Thickness(0);

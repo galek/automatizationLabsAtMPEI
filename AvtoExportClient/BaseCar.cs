@@ -6,6 +6,12 @@ namespace AvtoExportClient
     [Serializable]
     public class BaseCar
     {
+        public BaseCar()
+        {
+            uniqCarNumber = Counters.carNumber;
+            Counters.carNumber++;
+        }
+
         public enum _МатериалыМеталл
         {
             Заводская,
@@ -403,7 +409,7 @@ namespace AvtoExportClient
             }
         }
 
-            public Tuple<float, _МатериалыМеталл> МассаМаховикаИМатериал
+        public Tuple<float, _МатериалыМеталл> МассаМаховикаИМатериал
         {
             get
             {
@@ -559,7 +565,7 @@ namespace AvtoExportClient
             }
         }
 
-        public int UniqCarNumber
+        public int УникальныйФабричныйНомер
         {
             get
             {
@@ -684,7 +690,6 @@ namespace AvtoExportClient
         private DateTime датаПроизводстваЦелевойМашины = DateTime.Today;
 
         // Уникальный фабричный номер машины
-        // TODO: Увеличивать инкрементно
         private int uniqCarNumber = -1;
 
         private float _Цена = (float)700.0;//$

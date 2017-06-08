@@ -291,5 +291,32 @@ namespace AvtoExportClient
                 _RecomputePrice_Copy();
             }
         }
+
+        private void button1_Copy1_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.dataGrid_Copy.SelectedItem == null)
+                return;
+
+            if (MessageBox.Show("Завершить редкатирование?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                foreach (BaseCar car in dataGrid_Copy.SelectedItems)
+                {
+                    if (car != null)
+                    {
+                        CarManager.Instance.carListPreOrder.Remove(car);
+                        CarManager.Instance.carListOrdered.Add(car);
+                    }
+
+                }
+                this.dataGrid_Copy.ItemsSource = null;
+                this.dataGrid_Copy.ItemsSource = CarManager.Instance.carListPreOrder;
+
+                this.dataGrid.ItemsSource = null;
+                this.dataGrid.ItemsSource = CarManager.Instance.carListOrdered;
+
+                _RecomputePrice_Copy();
+                _RecomputePrice();
+            }
+        }
     }
 }

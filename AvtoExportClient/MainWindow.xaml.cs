@@ -31,6 +31,9 @@ namespace AvtoExportClient
 
 
             this.dataGrid.ItemsSource = CarManager.Instance.carListOrdered;
+
+            this.dataGrid.CanUserAddRows = false;
+            this.dataGrid_Copy.CanUserAddRows = false;
         }
 
         private void DataGrid_Loaded(object sender, RoutedEventArgs e)
@@ -160,6 +163,42 @@ namespace AvtoExportClient
                 this.dataGrid.ItemsSource = null;
                 this.dataGrid.ItemsSource = CarManager.Instance.carListOrdered;
             }
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            var car = new BaseCar();
+            CarManager.Instance.carListPreOrder.Add(car);
+
+            this.dataGrid_Copy.ItemsSource = null;
+            this.dataGrid_Copy.ItemsSource = CarManager.Instance.carListPreOrder;
+        }
+
+        private void VFTS_Base_Click(object sender, RoutedEventArgs e)
+        {
+            var car = new VFTS_Base();
+            CarManager.Instance.carListPreOrder.Add(car);
+
+            this.dataGrid_Copy.ItemsSource = null;
+            this.dataGrid_Copy.ItemsSource = CarManager.Instance.carListPreOrder;
+        }
+
+        private void VFTS_850_Click(object sender, RoutedEventArgs e)
+        {
+            var car = new VFTS_850();
+            CarManager.Instance.carListPreOrder.Add(car);
+
+            this.dataGrid_Copy.ItemsSource = null;
+            this.dataGrid_Copy.ItemsSource = CarManager.Instance.carListPreOrder;
+        }
+
+        private void VFTS_750_Click(object sender, RoutedEventArgs e)
+        {
+            var car = new VFTS_750();
+            CarManager.Instance.carListPreOrder.Add(car);
+
+            this.dataGrid_Copy.ItemsSource = null;
+            this.dataGrid_Copy.ItemsSource = CarManager.Instance.carListPreOrder;
         }
     }
 }

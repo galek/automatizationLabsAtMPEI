@@ -50,6 +50,13 @@ namespace AvtoExportClient
             this.dataGrid.CanUserAddRows = false;
 
             this.dataGrid_Copy.CanUserAddRows = false;
+
+            _InitConstants();
+        }
+
+        void _InitConstants()
+        {
+            Counters.carNumber = 1;// TODO: максимальный номер из BD
         }
 
         private void DataGrid_Copy_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -108,7 +115,7 @@ namespace AvtoExportClient
 
         void _CheckInPrice(BaseCar car)
         {
-   
+
 
             //car.Цена += 9999;
 
@@ -157,6 +164,7 @@ namespace AvtoExportClient
             {
                 JavaScriptSerializer jsonFormatter = new JavaScriptSerializer();
                 string res = jsonFormatter.Serialize(CarManager.Instance.carListOrdered);
+
                 File.WriteAllText(System.Environment.CurrentDirectory + @"\cars.json", res);
             }
         }

@@ -14,7 +14,6 @@ namespace AvtoExportClient
 
         private CarManager()
         {
-            _Test();
         }
 
         public static CarManager Instance
@@ -37,10 +36,6 @@ namespace AvtoExportClient
         //[Serializable]
         public List<BaseCar> carListOrdered = new List<BaseCar>();
         public List<BaseCar> carListPreOrder = new List<BaseCar>();
-
-        private void _Test()
-        {
-            carListOrdered.Add(new VFTS_Base());
-        }
+        
     }
 }

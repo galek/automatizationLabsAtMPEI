@@ -161,6 +161,8 @@
             <Button x:Name="button_Copy1" Grid.ColumnSpan="8" Content="Добавить VFTS 850" Grid.Column="36" Grid.Row="10" Grid.RowSpan="2" Margin="10,0,0,11" HorizontalAlignment="Left" Width="174" Click="VFTS_850_Click"/>
             <Button x:Name="button_Copy2" Grid.ColumnSpan="8" Content="Добавить VFTS 750" Grid.Column="45" Grid.Row="10" Grid.RowSpan="2" Margin="0,0,0,11" HorizontalAlignment="Left" Width="174" Click="VFTS_750_Click"/>
             <Button x:Name="button1_Copy" Grid.ColumnSpan="4" Content="Удалить" Grid.Column="2" Grid.Row="27" Grid.RowSpan="2" Margin="10,0,0,10" Click="button1_Copy_Click" HorizontalAlignment="Left" Width="75" Height="23" VerticalAlignment="Bottom"/>
+            <Label x:Name="label_Copy2" Grid.ColumnSpan="11" Content="Общая стоимость:" Grid.Column="36" Grid.Row="26" Grid.RowSpan="4" FontSize="20" Margin="0,8,0,10" />
+            <Label x:Name="label_price_Copy" Grid.ColumnSpan="7" Content="0 $" Grid.Column="44" Margin="0,1,1,7" Grid.Row="27" Grid.RowSpan="2" RenderTransformOrigin="6.597,12" />
         </Grid>
     </DockPanel>
 </Window>

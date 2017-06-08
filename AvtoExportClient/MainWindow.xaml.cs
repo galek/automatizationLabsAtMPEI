@@ -19,6 +19,8 @@ namespace AvtoExportClient
             InitializeComponent();
 
             this.dataGrid.AutoGenerateColumns = true;
+            this.dataGrid_Copy.AutoGenerateColumns = true;
+
             this.dataGrid.AddingNewItem += RecomputePrice;
             this.dataGrid.BeginningEdit += DataGrid_BeginningEdit;
             this.dataGrid.CellEditEnding += DataGrid_CellEditEnding;
@@ -28,52 +30,80 @@ namespace AvtoExportClient
             this.dataGrid.DataContextChanged += DataGrid_DataContextChanged;
             this.dataGrid.Initialized += DataGrid_Initialized;
             this.dataGrid.Loaded += DataGrid_Loaded;
+            this.dataGrid.DataContextChanged += DataGrid_DataContextChanged;
+
+            this.dataGrid_Copy.AddingNewItem += RecomputePrice;
+            this.dataGrid_Copy.BeginningEdit += DataGrid_BeginningEdit;
+            this.dataGrid_Copy.CellEditEnding += DataGrid_CellEditEnding;
+            this.dataGrid_Copy.ColumnReordered += DataGrid_ColumnReordered;
+            this.dataGrid_Copy.CurrentCellChanged += DataGrid_CurrentCellChanged;
+            this.dataGrid_Copy.RowEditEnding += DataGrid_RowEditEnding;
+            this.dataGrid_Copy.DataContextChanged += DataGrid_DataContextChanged;
+            this.dataGrid_Copy.Initialized += DataGrid_Initialized;
+            this.dataGrid_Copy.Loaded += DataGrid_Loaded;
+            this.dataGrid_Copy.DataContextChanged += DataGrid_DataContextChanged;
 
 
             this.dataGrid.ItemsSource = CarManager.Instance.carListOrdered;
+            this.dataGrid_Copy.ItemsSource = CarManager.Instance.carListPreOrder;
 
             this.dataGrid.CanUserAddRows = false;
+
             this.dataGrid_Copy.CanUserAddRows = false;
         }
 
-        private void DataGrid_Loaded(object sender, RoutedEventArgs e)
+        private void DataGrid_Copy_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             _RecomputePrice();
-        }
-
-        private void DataGrid_Initialized(object sender, System.EventArgs e)
-        {
-            _RecomputePrice();
+            _RecomputePrice_Copy();
         }
 
         private void DataGrid_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             _RecomputePrice();
+            _RecomputePrice_Copy();
+        }
+
+        private void DataGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            _RecomputePrice();
+            _RecomputePrice_Copy();
+        }
+
+        private void DataGrid_Initialized(object sender, System.EventArgs e)
+        {
+            _RecomputePrice();
+            _RecomputePrice_Copy();
         }
 
         private void DataGrid_RowEditEnding(object sender, System.Windows.Controls.DataGridRowEditEndingEventArgs e)
         {
             _RecomputePrice();
+            _RecomputePrice_Copy();
         }
 
         private void DataGrid_CurrentCellChanged(object sender, System.EventArgs e)
         {
             _RecomputePrice();
+            _RecomputePrice_Copy();
         }
 
         private void DataGrid_ColumnReordered(object sender, System.Windows.Controls.DataGridColumnEventArgs e)
         {
             _RecomputePrice();
+            _RecomputePrice_Copy();
         }
 
         private void DataGrid_CellEditEnding(object sender, System.Windows.Controls.DataGridCellEditEndingEventArgs e)
         {
             _RecomputePrice();
+            _RecomputePrice_Copy();
         }
 
         private void DataGrid_BeginningEdit(object sender, System.Windows.Controls.DataGridBeginningEditEventArgs e)
         {
             _RecomputePrice();
+            _RecomputePrice_Copy();
         }
 
         void _RecomputePrice()
@@ -84,6 +114,16 @@ namespace AvtoExportClient
                 _price += car.Цена;
 
             label_price.Content = _price + " $";
+        }
+
+        void _RecomputePrice_Copy()
+        {
+            float _price = 0;
+
+            foreach (BaseCar car in CarManager.Instance.carListPreOrder)
+                _price += car.Цена;
+
+            label_price_Copy.Content = _price + " $";
         }
 
         private void RecomputePrice(object sender, System.Windows.Controls.AddingNewItemEventArgs e)
@@ -162,6 +202,8 @@ namespace AvtoExportClient
                 }
                 this.dataGrid.ItemsSource = null;
                 this.dataGrid.ItemsSource = CarManager.Instance.carListOrdered;
+
+                _RecomputePrice();
             }
         }
 
@@ -173,6 +215,7 @@ namespace AvtoExportClient
 
             this.dataGrid_Copy.ItemsSource = null;
             this.dataGrid_Copy.ItemsSource = CarManager.Instance.carListPreOrder;
+            _RecomputePrice_Copy();
         }
 
         private void VFTS_Base_Click(object sender, RoutedEventArgs e)
@@ -182,6 +225,7 @@ namespace AvtoExportClient
 
             this.dataGrid_Copy.ItemsSource = null;
             this.dataGrid_Copy.ItemsSource = CarManager.Instance.carListPreOrder;
+            _RecomputePrice_Copy();
         }
 
         private void VFTS_850_Click(object sender, RoutedEventArgs e)
@@ -191,6 +235,7 @@ namespace AvtoExportClient
 
             this.dataGrid_Copy.ItemsSource = null;
             this.dataGrid_Copy.ItemsSource = CarManager.Instance.carListPreOrder;
+            _RecomputePrice_Copy();
         }
 
         private void VFTS_750_Click(object sender, RoutedEventArgs e)
@@ -200,6 +245,7 @@ namespace AvtoExportClient
 
             this.dataGrid_Copy.ItemsSource = null;
             this.dataGrid_Copy.ItemsSource = CarManager.Instance.carListPreOrder;
+            _RecomputePrice_Copy();
         }
 
         private void button1_Copy_Click(object sender, RoutedEventArgs e)
@@ -217,6 +263,8 @@ namespace AvtoExportClient
                 }
                 this.dataGrid_Copy.ItemsSource = null;
                 this.dataGrid_Copy.ItemsSource = CarManager.Instance.carListPreOrder;
+
+                _RecomputePrice_Copy();
             }
         }
     }

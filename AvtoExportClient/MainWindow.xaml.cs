@@ -1,7 +1,9 @@
-﻿using System.IO;
+﻿using System.Data;
+using System.IO;
 using System.Web.Script.Serialization;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Media;
 
@@ -131,7 +133,7 @@ namespace AvtoExportClient
 
                 Paragraph p = new Paragraph();
                 p.Inlines.Add("===================================\r\n");
-                p.Inlines.Add("Всего заказано машин: " + counter.ToString() +" cтоимость: " + label_price.Content.ToString() + "\r\n");
+                p.Inlines.Add("Всего заказано машин: " + counter.ToString() + " cтоимость: " + label_price.Content.ToString() + "\r\n");
                 p.Margin = new Thickness(0);
 
                 doc.Blocks.Add(p);
@@ -140,6 +142,24 @@ namespace AvtoExportClient
                 printDialog.PrintDocument(idpSource.DocumentPaginator, "My Printing");
             }
 
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.dataGrid.SelectedItem == null)
+                return;
+
+            if (MessageBox.Show("Удалить?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                foreach (BaseCar car in dataGrid.SelectedItems)
+                {
+                    if (car != null)
+                        CarManager.Instance.carListOrdered.Remove(car);
+
+                }
+                this.dataGrid.ItemsSource = null;
+                this.dataGrid.ItemsSource = CarManager.Instance.carListOrdered;
+            }
         }
     }
 }

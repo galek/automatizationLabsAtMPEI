@@ -128,8 +128,8 @@
                 <ColumnDefinition Width="10*" />
                 <ColumnDefinition Width="10*" />
             </Grid.ColumnDefinitions>
-            <DataGrid x:Name="dataGrid" VirtualizingPanel.IsVirtualizing="False" Grid.Column="1" Grid.ColumnSpan="40" Grid.Row="37" Grid.RowSpan="15" Margin="0,5,4,0" IsReadOnly="True" HorizontalAlignment="Right" Width="1162" />
-            <DataGrid x:Name="dataGrid_Copy" VirtualizingPanel.IsVirtualizing="False" Margin="0,2,4,0" VerticalAlignment="Top" RenderTransformOrigin="4.75,0.846" Height="236" Grid.Column="1" Grid.ColumnSpan="40" Grid.Row="3" Grid.RowSpan="13" CanUserAddRows="False" HorizontalAlignment="Right" Width="1162" />
+            <DataGrid x:Name="dataGrid" VirtualizingPanel.IsVirtualizing="False" Grid.Column="1" Grid.ColumnSpan="40" Grid.Row="37" Grid.RowSpan="15" Margin="0,5,4,0" IsReadOnly="True" HorizontalAlignment="Right" Width="1162" HorizontalScrollBarVisibility="Visible" />
+            <DataGrid x:Name="dataGrid_Copy" VirtualizingPanel.IsVirtualizing="False" Grid.Column="1" Grid.ColumnSpan="40" Grid.Row="3" Grid.RowSpan="13" CanUserAddRows="False" HorizontalAlignment="Right" Width="1162" HorizontalScrollBarVisibility="Visible" />
 
             <Label x:Name="label" Grid.ColumnSpan="8" Content="Заказанные машины" Margin="26,0,7,4" Grid.Row="35" Grid.RowSpan="2" Height="26" VerticalAlignment="Bottom"  />
             <Label x:Name="label_Copy" Grid.ColumnSpan="8" Content="Конфигуратор авто" Margin="26,0,7,9" Grid.Row="1" Grid.RowSpan="2" Height="26" VerticalAlignment="Bottom" />

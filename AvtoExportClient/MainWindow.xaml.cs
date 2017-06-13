@@ -320,7 +320,9 @@ namespace AvtoExportClient
             //    printDialog.PrintDocument(idpSource.DocumentPaginator, "My Printing");
             //}
 
-            officeAutomationWord.CreateDocument("0", "test", 5);
+            MessageBox.Show(this.dataGrid.Items.Count.ToString());
+
+            officeAutomationWord.CreateDocument("0", "test", this.dataGrid.Items.Count, this.dataGrid);
 
         }
 

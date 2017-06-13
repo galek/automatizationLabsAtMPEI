@@ -6,7 +6,7 @@ namespace AvtoExportClient
 {
     static class officeAutomationWord
     {
-        public static void CreateDocument(string _номердоговора, string _имязаказчика)
+        public static void CreateDocument(string _номердоговора, string _имязаказчика, int _количествомашин)
         {
             try
             {
@@ -149,28 +149,78 @@ namespace AvtoExportClient
                 para1.Range.Text = "Исходники по языку программирования CSharp";
                 para1.Range.InsertParagraphAfter();
 
-                //Создание таблицы 5х5
-                Table firstTable = document.Tables.Add(para1.Range, 5, 5, ref missing, ref missing);
+                //Создание таблицы 4хn
+                Table firstTable = document.Tables.Add(para1.Range, _количествомашин, 4, ref missing, ref missing);
 
                 firstTable.Borders.Enable = 1;
+
                 foreach (Row row in firstTable.Rows)
                 {
                     foreach (Cell cell in row.Cells)
                     {
+
                         //Заголовок таблицы
                         if (cell.RowIndex == 1)
                         {
-                            cell.Range.Text = "Колонка " + cell.ColumnIndex.ToString();
-                            cell.Range.Font.Bold = 1;
-                            //Задаем шрифт и размер текста
-                            cell.Range.Font.Name = "verdana";
-                            cell.Range.Font.Size = 10;
-                            cell.Shading.BackgroundPatternColor = WdColor.wdColorGray25;
-                            //Выравнивание текста в заголовках столбцов по центру
-                            cell.VerticalAlignment =
-                            WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-                            cell.Range.ParagraphFormat.Alignment =
-                            WdParagraphAlignment.wdAlignParagraphCenter;
+                            // Базовая структура
+                            if (cell.ColumnIndex == 1)
+                            {
+                                cell.Range.Text = "Название модели";
+                                cell.Range.Font.Bold = 1;
+                                //Задаем шрифт и размер текста
+                                cell.Range.Font.Name = "verdana";
+                                cell.Range.Font.Size = 10;
+                                cell.Shading.BackgroundPatternColor = WdColor.wdColorGray25;
+                                //Выравнивание текста в заголовках столбцов по центру
+                                cell.VerticalAlignment =
+                                WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                cell.Range.ParagraphFormat.Alignment =
+                                WdParagraphAlignment.wdAlignParagraphCenter;
+                            }
+                            else if (cell.ColumnIndex == 2)
+                            {
+                                cell.Range.Text = "Уникальный фабричный номер";
+                                cell.Range.Font.Bold = 1;
+                                //Задаем шрифт и размер текста
+                                cell.Range.Font.Name = "verdana";
+                                cell.Range.Font.Size = 10;
+                                cell.Shading.BackgroundPatternColor = WdColor.wdColorGray25;
+                                //Выравнивание текста в заголовках столбцов по центру
+                                cell.VerticalAlignment =
+                                WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                cell.Range.ParagraphFormat.Alignment =
+                                WdParagraphAlignment.wdAlignParagraphCenter;
+                            }
+                            else
+                            if (cell.ColumnIndex == 3)
+                            {
+                                cell.Range.Text = "Дата производства исходной машины";
+                                cell.Range.Font.Bold = 1;
+                                //Задаем шрифт и размер текста
+                                cell.Range.Font.Name = "verdana";
+                                cell.Range.Font.Size = 10;
+                                cell.Shading.BackgroundPatternColor = WdColor.wdColorGray25;
+                                //Выравнивание текста в заголовках столбцов по центру
+                                cell.VerticalAlignment =
+                                WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                cell.Range.ParagraphFormat.Alignment =
+                                WdParagraphAlignment.wdAlignParagraphCenter;
+                            }
+                            else
+                            if (cell.ColumnIndex == 4)
+                            {
+                                cell.Range.Text = "Дата получения машины заказчиком";
+                                cell.Range.Font.Bold = 1;
+                                //Задаем шрифт и размер текста
+                                cell.Range.Font.Name = "verdana";
+                                cell.Range.Font.Size = 10;
+                                cell.Shading.BackgroundPatternColor = WdColor.wdColorGray25;
+                                //Выравнивание текста в заголовках столбцов по центру
+                                cell.VerticalAlignment =
+                                WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                cell.Range.ParagraphFormat.Alignment =
+                                WdParagraphAlignment.wdAlignParagraphCenter;
+                            }
                         }
                         //Значения ячеек
                         else

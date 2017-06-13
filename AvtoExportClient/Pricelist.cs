@@ -15,6 +15,8 @@ namespace AvtoExportClient
     public static class Counters
     {
         public static int carNumber = 0;
+        public static int НомерЗаказа = 0;
+        public static string ИмяЗаказчика = "";
     }
 
     class Pricelist

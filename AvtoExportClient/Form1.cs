@@ -27,7 +27,8 @@ namespace Test
         private void button1_Click(object sender, EventArgs e)
         {
             Counters.ИмяЗаказчика = this.textBox1.Text;
-            officeAutomationWord.CreateDocument(Counters.НомерЗаказа.ToString(), Counters.ИмяЗаказчика, ItemsCount, this.grid);
+            officeAutomationWord.CreateDocument(Counters.НомерЗаказа.ToString() + "(Клиент)", Counters.ИмяЗаказчика, ItemsCount, this.grid);
+            officeAutomationWord.CreateDocument(Counters.НомерЗаказа.ToString() + "(Салон)", Counters.ИмяЗаказчика, ItemsCount, this.grid);
             Counters.НомерЗаказа++;
 
             this.Dispose();

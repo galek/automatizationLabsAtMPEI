@@ -1,6 +1,7 @@
 ﻿using Microsoft.Office.Interop.Word;
 using System;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace AvtoExportClient
 {
@@ -44,7 +45,7 @@ namespace AvtoExportClient
                     headerRange.Font.ColorIndex =
                    Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
                     headerRange.Font.Size = 10;
-                    headerRange.Text = "Верхний колонтитул" + Environment.NewLine + "Договор №" + _номердоговора + "-" + _имязаказчика;
+                    headerRange.Text = /*"Верхний колонтитул" + Environment.NewLine + "Договор №" + _номердоговора + "-" + _имязаказчика+*/Environment.NewLine;
                 }
 
                 //Добавление нижнего колонтитула
@@ -61,7 +62,7 @@ namespace AvtoExportClient
                     footerRange.ParagraphFormat.Alignment =
                         Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
                     //Установка текста для вывода в нижнем колонтитуле
-                    footerRange.Text = "Нижний колонтитул" + Environment.NewLine + "";
+                    footerRange.Text = /*"Нижний колонтитул" + */Environment.NewLine + "";
                 }
 
                 //Добавление текста в документ
@@ -75,8 +76,14 @@ namespace AvtoExportClient
                 para1.Range.Text = "Договор №" + _номердоговора + "-" + _имязаказчика;
                 para1.Range.InsertParagraphAfter();
 
-                //Создание таблицы 4хn
-                Table firstTable = document.Tables.Add(para1.Range, _количествомашин + 1, 4, ref missing, ref missing);
+                // 
+                float _общаяЦена = (float)0.0;
+
+
+                //Создание таблицы 5хn
+                const int size = 5;
+
+                Table firstTable = document.Tables.Add(para1.Range, _количествомашин + 1, size, ref missing, ref missing);
 
                 firstTable.Borders.Enable = 1;
 
@@ -147,6 +154,21 @@ namespace AvtoExportClient
                                 cell.Range.ParagraphFormat.Alignment =
                                 WdParagraphAlignment.wdAlignParagraphCenter;
                             }
+                            else
+                            if (cell.ColumnIndex == 5)
+                            {
+                                cell.Range.Text = "Цена";
+                                cell.Range.Font.Bold = 1;
+                                //Задаем шрифт и размер текста
+                                cell.Range.Font.Name = "verdana";
+                                cell.Range.Font.Size = 10;
+                                cell.Shading.BackgroundPatternColor = WdColor.wdColorGray25;
+                                //Выравнивание текста в заголовках столбцов по центру
+                                cell.VerticalAlignment =
+                                WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                cell.Range.ParagraphFormat.Alignment =
+                                WdParagraphAlignment.wdAlignParagraphCenter;
+                            }
                         }
                         //Значения ячеек
                         else
@@ -162,15 +184,21 @@ namespace AvtoExportClient
                                 cell.Range.Text = car.ДатаПроизводстваИсходнойМашины.ToString();
                             else if (cell.ColumnIndex == 4)
                                 cell.Range.Text = car.ДатаПроизводстваЦелевойМашины.ToString();
+                            else if (cell.ColumnIndex == 5)
+                            {
+                                cell.Range.Text = car.Цена.ToString();
+                                _общаяЦена += car.Цена;
+                            }
                         }
                     }
                 }
 
-                _ТекстДоговора(document, missing, _количествомашин);
+                _ТекстДоговора(document, missing, _количествомашин, _общаяЦена);
 
                 //Сохранение документа
                 object filename = @"C:\res\" + _номердоговора + ".docx";
                 document.SaveAs(ref filename);
+
 
                 if (MessageBox.Show("Document created successfully: on path:" + filename.ToString() + " Open in Word?", "Successfull", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
@@ -185,6 +213,20 @@ namespace AvtoExportClient
                     //Закрытие приложения Word
                     winword.Quit(ref missing, ref missing, ref missing);
                     winword = null;
+
+                    if (MessageBox.Show("Распечатать?", "Печать?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        using (PrintDialog pd = new PrintDialog())
+                        {
+                            pd.ShowDialog();
+                            ProcessStartInfo info = new ProcessStartInfo(filename.ToString());
+                            info.Verb = "PrintTo";
+                            info.Arguments = pd.PrinterSettings.PrinterName;
+                            info.CreateNoWindow = true;
+                            info.WindowStyle = ProcessWindowStyle.Hidden;
+                            Process.Start(info);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -193,14 +235,14 @@ namespace AvtoExportClient
             }
         }
 
-        static private void _ТекстДоговора(Microsoft.Office.Interop.Word.Document document, object missing, int _количествомашин)
+        static private void _ТекстДоговора(Microsoft.Office.Interop.Word.Document document, object missing, int _количествомашин, float _всего)
         {
 
             //Добавление текста со стилем Обычный
             var para1 = document.Content.Paragraphs.Add(ref missing);
             object styleHeading1 = "Обычный";
             para1.Range.set_Style(styleHeading1);
-            para1.Range.Text = "Всего заказано машин: " + _количествомашин.ToString() + Environment.NewLine;
+            para1.Range.Text = "Всего заказано машин: " + _количествомашин.ToString() + " Цена: " + _всего.ToString() + Environment.NewLine;
             para1.Range.InsertParagraphAfter();
 
 

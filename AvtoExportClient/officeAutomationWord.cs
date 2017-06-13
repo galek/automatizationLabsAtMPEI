@@ -44,7 +44,7 @@ namespace AvtoExportClient
                     headerRange.Font.ColorIndex =
                    Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
                     headerRange.Font.Size = 10;
-                    headerRange.Text = "Верхний колонтитул" + Environment.NewLine + "www.CSharpCoderR.com";
+                    headerRange.Text = "Верхний колонтитул" + Environment.NewLine + "Договор №" + _номердоговора + "-" + _имязаказчика;
                 }
 
                 //Добавление нижнего колонтитула
@@ -61,18 +61,18 @@ namespace AvtoExportClient
                     footerRange.ParagraphFormat.Alignment =
                         Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
                     //Установка текста для вывода в нижнем колонтитуле
-                    footerRange.Text = "Нижний колонтитул" + Environment.NewLine + "www.CSharpCoderR.com";
+                    footerRange.Text = "Нижний колонтитул" + Environment.NewLine + "";
                 }
 
                 //Добавление текста в документ
                 document.Content.SetRange(0, 0);
-                document.Content.Text = "www.CSharpCoderR.com" + Environment.NewLine;
+                document.Content.Text = "Договор №" + _номердоговора + "-" + _имязаказчика + Environment.NewLine;
 
                 //Добавление текста со стилем Заголовок 1
                 Microsoft.Office.Interop.Word.Paragraph para1 = document.Content.Paragraphs.Add(ref missing);
                 object styleHeading1 = "Заголовок 1";
                 para1.Range.set_Style(styleHeading1);
-                para1.Range.Text = "Исходники по языку программирования CSharp";
+                para1.Range.Text = "Договор №" + _номердоговора + "-" + _имязаказчика;
                 para1.Range.InsertParagraphAfter();
 
                 //Создание таблицы 4хn
